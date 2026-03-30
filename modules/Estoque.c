@@ -1,26 +1,25 @@
 #include <stdio.h>
+#include "../headers/tipos.h"
 
-/*Controle de estoque*/
-typedef struct{
-	int atual, quantidade;
-} Estoque;
+void adicionarEstoque(Produto *p, int quantidade){
+    p->quantidade += quantidade;
+    printf("Estoque atualizado: %d unidades\n", p->quantidade);
+}
 
-Estoque adicionarEstoque(Estoque e){
-	e.atual = e.atual + e.quantidade;
-	return e;
+int removerEstoque(Produto *p, int quantidade){
+    if (p->quantidade - quantidade < 0){
+        printf("Estoque insuficiente! Disponivel: %d\n", p->quantidade);
+        return 0;
+    }
+    p->quantidade -= quantidade;
+    return 1;
 }
-Estoque removerEstoque(Estoque e){
-	if(e.atual - e.quantidade < 0){
-		printf("Estoque esgotado já");
-	}else{
-		e.atual = e.atual - e.quantidade;
-	}
-	return e;
-}
-void verificarEstoque(Estoque e){
-	if (e.atual > 10){
-		printf("Estoque Ok!\n");
-	}else{
-		printf("Estoque abaixo de 10\n");
-	}
+
+void verificarEstoque(Produto *p){
+    if (p->quantidade == 0)
+        printf("[%s] SEM ESTOQUE!\n", p->nome);
+    else if (p->quantidade < 10)
+        printf("[%s] Estoque baixo: %d unidades\n", p->nome, p->quantidade);
+    else
+        printf("[%s] Estoque OK: %d unidades\n", p->nome, p->quantidade);
 }

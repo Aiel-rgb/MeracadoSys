@@ -15,7 +15,7 @@ int main(){
 	scanf("%d", &quantos);
 	
 	cadastrarProdutos(&produtos, &total, quantos);
-	listarProdutos(produtos, total);
+	listarProdutos(produtos,total);
 	printf("\nValor total em estoque: R$ %.2f\n", valorTotalEstoque(produtos, total));
 	
 	free(produtos);

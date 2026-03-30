@@ -1,5 +1,5 @@
-#ifndef tipos_H
-#define tipos_H
+#ifndef TIPOS_H
+#define TIPOS_H
 
 typedef struct{
 	char nome[100];
